@@ -1,0 +1,15 @@
+name: Build and Push Docker Image
+on:
+   push:
+   branches:["main"]
+  jobbs:
+    build:
+       runs-on: ubuntu-latest
+       steps:
+          -uses: actions/checkout@V3
+          -name: Login to Dockerhub
+          run: docker login -u ${{secrets.DOCKER_USER}} -p ${{secrets.DOCKER_PASS}}
+          -name: Build Image
+          run: docker build -t saminnasr/myfirstsite:latest .
+          -name: Push Image
+          run: docker push saminnasr/myfirstsite:latest
