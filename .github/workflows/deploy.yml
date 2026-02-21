@@ -26,8 +26,11 @@ jobs:
           push: true
           tags: |
             saminnasr/myfirstsite:${{github.sha}}
+      - name: Apply Kubernetes Service
+        run: |
+            kubectl apply -f K8s/service.yaml
+
       - name: Deploy to Kubernetes
         run: |
            kubectl set image deployment/my-site\
            mysite=saminnasr/myfirstsite:${{github.sha}}
-      
