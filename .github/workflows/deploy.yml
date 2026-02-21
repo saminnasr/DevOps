@@ -28,7 +28,7 @@ jobs:
             saminnasr/myfirstsite:${{github.sha}}
       - name: Apply Kubernetes Service
         run: |
-            kubectl apply -f K8s/service.yaml
+           kubectl apply -f K8s/service.yaml
 
       - name: Deploy to Kubernetes
         run: |
